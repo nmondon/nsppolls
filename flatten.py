@@ -7,7 +7,7 @@ resp = Path('presidentielle.json').read_text()
 
 nsp_polls = (pd
     .json_normalize(
-        json.loads(resp.text),
+        json.loads(resp),
         record_path=['tours','hypotheses', 'candidats'],
         meta=[
             'id', 'nom_institut', 'commanditaire', 'debut_enquete', 'fin_enquete', 'echantillon', 'population',
