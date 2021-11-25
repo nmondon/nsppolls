@@ -24,11 +24,10 @@ jobs:
         run: pip install pandas numpy pathlib
       - name: 🍳 Execute our script
         run: python flatten.py    
-      - name: 🚀 Commit and push if it changed
-        run: |
-          git config user.name "${GITHUB_ACTOR}"
-          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-          git add -A
-          timestamp=$(date -u)
-          git commit -m "flatten presidentielle.json as a csv ${timestamp}" || exit 0
-          git push        
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v7
+        with:
+          author_name: NspPolls
+          author_email: hello@nsppolls.fr
+          message: 'Generate presidentielle.csv'
+          add: 'presidentielle.csv'
